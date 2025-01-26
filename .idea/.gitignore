@@ -9,6 +9,7 @@ target/
 *.iml
 *.iws
 *.ipr
+.Docs/
 
 # Compiled class files
 *.class

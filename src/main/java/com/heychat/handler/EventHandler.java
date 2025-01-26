@@ -4,10 +4,17 @@ import com.fasterxml.jackson.databind.JsonNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.heychat.util.HttpUtil;
+import com.heychat.service.SignInService;
+import com.heychat.model.SignInRecord;
 
 public class EventHandler {
     private static final Logger logger = LoggerFactory.getLogger(EventHandler.class);
     private static final String MSG_TYPE_USECOMMAND = "USE_COMMAND";
+    private final SignInService signInService;
+
+    public EventHandler() {
+        this.signInService = new SignInService();
+    }
 
     public void handleMessage(JsonNode data) {
         if (!data.has("type")) {
@@ -28,13 +35,28 @@ public class EventHandler {
         if ("5".equals(type) && messageData != null) {
             // 检查是否是签到命令
             if ("/sign".equals(messageData.get("msg").asText())) {
-                logger.info("收到签到命令");
+                logger.info("收到签到命令，消息数据: {}", messageData.toString());
                 String channelId = messageData.get("channel_id").asText();
                 String roomId = messageData.get("room_id").asText();
                 
-                // 发送签到成功消息
-                HttpUtil.sendMessage(channelId, roomId, "签到成功！");
-                logger.info("签到成功消息已发送");
+                // 直接从消息数据中获取用户信息
+                if (messageData.has("user_id") && messageData.has("nickname")) {
+                    String userId = messageData.get("user_id").asText();
+                    String nickname = messageData.get("nickname").asText();
+                    
+                    // 处理签到
+                    SignInRecord record = signInService.signIn(userId, nickname);
+                    
+                    // 生成签到消息
+                    String message = signInService.generateSignInMessage(record);
+                    
+                    // 发送消息
+                    HttpUtil.sendMessage(channelId, roomId, message);
+                    logger.info("签到消息已发送");
+                } else {
+                    logger.error("消息中缺少用户ID或昵称");
+                    HttpUtil.sendMessage(channelId, roomId, "签到失败：无法获取用户信息");
+                }
             } else {
                 // 其他类型的消息
                 handleHeartbeat();
@@ -59,6 +81,17 @@ public class EventHandler {
             String commandId = commandInfo.get("id").asText();
             logger.info("命令ID: {}", commandId);
 
+            // 获取用户信息
+            if (!data.has("user_info")) {
+                logger.warn("命令数据中没有user_info字段");
+                return;
+            }
+
+            JsonNode userInfo = data.get("user_info");
+            String userId = userInfo.get("user_id").asText();
+            String nickname = userInfo.get("nickname").asText();
+            logger.info("用户ID: {}, 昵称: {}", userId, nickname);
+
             if (data.has("channel_base_info") && data.has("room_base_info")) {
                 String channelId = data.get("channel_base_info").get("channel_id").asText();
                 String roomId = data.get("room_base_info").get("room_id").asText();
@@ -67,10 +100,17 @@ public class EventHandler {
                 
                 // 处理签到命令
                 if (commandId.equals("1877275511199731712")) {
-                    logger.info("收到签到命令，准备发送响应");
-                    // 发送签到成功消息
-                    HttpUtil.sendMessage(channelId, roomId, "签到成功！");
-                    logger.info("签到成功消息已发送");
+                    logger.info("收到签到命令，准备处理");
+                    
+                    // 处理签到
+                    SignInRecord record = signInService.signIn(userId, nickname);
+                    
+                    // 生成签到消息
+                    String message = signInService.generateSignInMessage(record);
+                    
+                    // 发送消息
+                    HttpUtil.sendMessage(channelId, roomId, message);
+                    logger.info("签到消息已发送");
                 } else {
                     logger.info("未知的命令ID: {}", commandId);
                 }
