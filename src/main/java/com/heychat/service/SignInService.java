@@ -2,6 +2,7 @@ package com.heychat.service;
 
 import com.heychat.config.DatabaseConfig;
 import com.heychat.model.SignInRecord;
+import com.heychat.model.LevelSystem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -100,18 +101,35 @@ public class SignInService {
             // 更新总签到天数
             record.setTotalDays(record.getTotalDays() + 1);
             
+            // 计算获得的经验值
+            int exp = calculateExp(record.getContinuousDays());
+            int oldExp = record.getExperience();
+            int newExp = oldExp + exp;
+            record.setExperience(newExp);
+            
+            // 计算新等级
+            int newLevel = LevelSystem.calculateLevel(newExp);
+            if (newLevel > record.getLevel()) {
+                record.setLevel(newLevel);
+                logger.info("用户 {} 升级到 {} 级", record.getNickname(), newLevel);
+            }
+            
             // 更新签到时间和日期
             record.setSignInTime(new Timestamp(System.currentTimeMillis()));
             record.setLastSignInDate(Date.valueOf(currentDate));
             
             // 更新数据库
-            String sql = "UPDATE sign_in_records SET sign_in_time = ?, continuous_days = ?, total_days = ?, last_sign_in_date = ? WHERE user_id = ?";
+            String sql = "UPDATE sign_in_records SET sign_in_time = ?, continuous_days = ?, " +
+                        "total_days = ?, last_sign_in_date = ?, experience = ?, level = ? " +
+                        "WHERE user_id = ?";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setTimestamp(1, record.getSignInTime());
                 stmt.setInt(2, record.getContinuousDays());
                 stmt.setInt(3, record.getTotalDays());
                 stmt.setDate(4, record.getLastSignInDate());
-                stmt.setString(5, record.getUserId());
+                stmt.setInt(5, record.getExperience());
+                stmt.setInt(6, record.getLevel());
+                stmt.setString(7, record.getUserId());
                 stmt.executeUpdate();
             }
         }
@@ -132,6 +150,22 @@ public class SignInService {
         StringBuilder message = new StringBuilder();
         message.append(String.format("签到成功！%s\n", record.getNickname()));
         message.append(String.format("本次经验值 +%d\n", exp));
+        
+        // 添加等级信息
+        int currentLevel = record.getLevel();
+        int totalExp = record.getExperience();
+        int nextLevelExp = LevelSystem.getNextLevelExp(currentLevel);
+        
+        if (nextLevelExp > 0) {
+            message.append(String.format("当前等级: %d级 (%.1f%%)\n", 
+                currentLevel,
+                ((totalExp - LevelSystem.getCurrentLevelExp(currentLevel)) * 100.0) / 
+                (nextLevelExp - LevelSystem.getCurrentLevelExp(currentLevel))
+            ));
+        } else {
+            message.append(String.format("当前等级: %d级 (满级)\n", currentLevel));
+        }
+        
         message.append("今日运势:\n");
         message.append(String.format("元气: %.1f", energy));
         

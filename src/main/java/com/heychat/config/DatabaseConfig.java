@@ -49,6 +49,8 @@ public class DatabaseConfig {
             "    continuous_days INTEGER DEFAULT 1," +
             "    total_days INTEGER DEFAULT 1," +
             "    last_sign_in_date DATE," +
+            "    experience INTEGER DEFAULT 0," +
+            "    level INTEGER DEFAULT 1," +
             "    UNIQUE(user_id)" +
             ")";
 

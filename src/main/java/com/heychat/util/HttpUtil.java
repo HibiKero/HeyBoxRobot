@@ -7,6 +7,13 @@ import okhttp3.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 public class HttpUtil {
@@ -51,6 +58,45 @@ public class HttpUtil {
         }
     }
     
+    /**
+     * 发送POST请求，带JSON数据
+     */
+    public static String postJson(String path, String jsonBody) throws IOException {
+        String url = Config.getHttpUrl() + path + getQueryString();
+        logger.info("准备发送POST请求到URL: {}", url);
+        logger.info("请求体: {}", jsonBody);
+
+        HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setDoOutput(true);
+
+        try (OutputStream os = conn.getOutputStream()) {
+            byte[] input = jsonBody.getBytes(StandardCharsets.UTF_8);
+            os.write(input, 0, input.length);
+        }
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
+            StringBuilder response = new StringBuilder();
+            String responseLine;
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            logger.info("请求响应: {}", response.toString());
+            return response.toString();
+        }
+    }
+
+    /**
+     * 获取通用的查询参数字符串
+     */
+    private static String getQueryString() {
+        return "?chat_os_type=bot" +
+               "&client_type=heybox_chat" +
+               "&chat_version=999.0.0" +
+               "&token=" + Config.getToken();
+    }
+
     private static class MessageRequest {
         @JsonProperty("msg")
         public String msg;
@@ -60,7 +106,7 @@ public class HttpUtil {
         public String channelId;
         @JsonProperty("room_id")
         public String roomId;
-        
+
         public MessageRequest(String msg, String channelId, String roomId) {
             this.msg = msg;
             this.channelId = channelId;

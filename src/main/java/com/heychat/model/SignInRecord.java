@@ -13,10 +13,14 @@ public class SignInRecord {
     private int totalDays;
     private Date lastSignInDate;
     private boolean alreadySignedToday;
+    private int experience;
+    private int level;
 
     // 构造函数
     public SignInRecord() {
         this.alreadySignedToday = false;
+        this.experience = 0;
+        this.level = 1;
     }
 
     public SignInRecord(String userId, String nickname) {
@@ -27,6 +31,8 @@ public class SignInRecord {
         this.totalDays = 1;
         this.lastSignInDate = Date.valueOf(LocalDate.now());
         this.alreadySignedToday = false;
+        this.experience = 0;
+        this.level = 1;
     }
 
     // Getters and Setters
@@ -94,6 +100,22 @@ public class SignInRecord {
         this.alreadySignedToday = alreadySignedToday;
     }
 
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     @Override
     public String toString() {
         return "SignInRecord{" +
@@ -104,6 +126,8 @@ public class SignInRecord {
                 ", continuousDays=" + continuousDays +
                 ", totalDays=" + totalDays +
                 ", lastSignInDate=" + lastSignInDate +
+                ", experience=" + experience +
+                ", level=" + level +
                 ", alreadySignedToday=" + alreadySignedToday +
                 '}';
     }
