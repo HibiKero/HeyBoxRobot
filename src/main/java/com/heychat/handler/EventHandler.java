@@ -111,7 +111,7 @@ public class EventHandler {
                     // 发送消息
                     HttpUtil.sendMessage(channelId, roomId, message);
                     logger.info("签到消息已发送");
-                } else {
+                    } else {
                     logger.info("未知的命令ID: {}", commandId);
                 }
             } else {
