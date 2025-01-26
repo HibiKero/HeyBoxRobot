@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="054a3c33-c1af-44bd-b9c9-8f43d33ed626" name="更改" comment="项目初始" />
+    <list default="true" id="054a3c33-c1af-44bd-b9c9-8f43d33ed626" name="更改" comment="更新1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +16,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="HibiKero" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
@@ -23,7 +28,9 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2rNxT7aqgyILEhj1WSHo0Yz8Jcr" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -95,6 +102,7 @@
       <workItem from="1736438637375" duration="1626000" />
       <workItem from="1736576377501" duration="5297000" />
       <workItem from="1737903059732" duration="44000" />
+      <workItem from="1737903282661" duration="301000" />
     </task>
     <task id="LOCAL-00001" summary="测试">
       <option name="closed" value="true" />
@@ -120,18 +128,37 @@
       <option name="project" value="LOCAL" />
       <updated>1736583339525</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="更新1">
+      <option name="closed" value="true" />
+      <created>1737903398796</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1737903398796</updated>
+    </task>
+    <task id="LOCAL-00005" summary="更新1">
+      <option name="closed" value="true" />
+      <created>1737903444370</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1737903444370</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_NEW_TODO" value="false" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
     <MESSAGE value="测试" />
     <MESSAGE value="项目初始" />
-    <option name="LAST_COMMIT_MESSAGE" value="项目初始" />
+    <MESSAGE value="更新1" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新1" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
