@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="054a3c33-c1af-44bd-b9c9-8f43d33ed626" name="更改" comment="项目初始">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/heychat/client/HeyChatWebSocketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/heychat/client/HeyChatWebSocketClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/heychat/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/heychat/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/heychat/client/HeyChatWebSocketClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/heychat/client/HeyChatWebSocketClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/heychat/client/SignCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/heychat/client/SignCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/heychat/config/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/heychat/config/Config.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/heychat/handler/EventHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/heychat/handler/EventHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/heychat/model/SendMessageRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/heychat/model/SendMessageRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/heychat/service/MessageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/heychat/service/MessageService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/heychat/util/HttpUtil$MessageRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/heychat/util/HttpUtil$MessageRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/heychat/util/HttpUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/heychat/util/HttpUtil.class" afterDir="false" />
-    </list>
+    <list default="true" id="054a3c33-c1af-44bd-b9c9-8f43d33ed626" name="更改" comment="项目初始" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,26 +28,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Maven.HeychatDemo [clean,package...].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/12614/IdeaProjects/HeyBoxRobot",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true",
-    "应用程序.Main.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Maven.HeychatDemo [clean,package...].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/12614/IdeaProjects/HeyBoxRobot&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="HeychatDemo [clean,package...]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
@@ -107,6 +94,7 @@
       <workItem from="1736414212259" duration="3207000" />
       <workItem from="1736438637375" duration="1626000" />
       <workItem from="1736576377501" duration="5297000" />
+      <workItem from="1737903059732" duration="44000" />
     </task>
     <task id="LOCAL-00001" summary="测试">
       <option name="closed" value="true" />
