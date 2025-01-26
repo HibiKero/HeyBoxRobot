@@ -34,7 +34,7 @@ public class HeyChatWebSocketClient extends WebSocketClient {
         heartbeatExecutor = Executors.newSingleThreadScheduledExecutor();
         heartbeatExecutor.scheduleAtFixedRate(this::sendPing, 0, 30, TimeUnit.SECONDS);
     }
-    
+
     @Override
     public void onOpen(ServerHandshake handshake) {
         logger.info("Connected to server");
